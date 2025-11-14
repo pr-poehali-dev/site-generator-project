@@ -2,8 +2,11 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import Icon from '@/components/ui/icon';
+import { useNavigate } from 'react-router-dom';
 
 const Index = () => {
+  const navigate = useNavigate();
+
   const features = [
     {
       icon: 'MousePointer2',
@@ -117,7 +120,7 @@ const Index = () => {
             <a href="#docs" className="text-sm font-medium hover:text-primary transition-colors">Документация</a>
             <a href="#contact" className="text-sm font-medium hover:text-primary transition-colors">Контакты</a>
           </nav>
-          <Button size="sm">Войти</Button>
+          <Button size="sm" onClick={() => navigate('/login')}>Войти</Button>
         </div>
       </header>
 
@@ -136,7 +139,7 @@ const Index = () => {
               Профессиональные сайты за минуты. Визуальный редактор, готовые шаблоны и встроенный хостинг — всё в одном месте.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button size="lg" className="text-lg px-8">
+              <Button size="lg" className="text-lg px-8" onClick={() => navigate('/register')}>
                 Начать бесплатно
                 <Icon name="ArrowRight" size={20} className="ml-2" />
               </Button>
