@@ -4,9 +4,10 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Badge } from '@/components/ui/badge';
 import { Input } from '@/components/ui/input';
 import Icon from '@/components/ui/icon';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [projects] = useState([
     {
       id: 1,
@@ -97,7 +98,7 @@ const Dashboard = () => {
             <h1 className="text-4xl font-bold mb-2">Мои проекты</h1>
             <p className="text-muted-foreground">Управляйте всеми вашими сайтами в одном месте</p>
           </div>
-          <Button size="lg">
+          <Button size="lg" onClick={() => navigate('/editor')}>
             <Icon name="Plus" size={20} className="mr-2" />
             Создать сайт
           </Button>
@@ -167,7 +168,7 @@ const Dashboard = () => {
                   </div>
                 </div>
                 <div className="flex gap-2">
-                  <Button className="flex-1" size="sm">
+                  <Button className="flex-1" size="sm" onClick={() => navigate(`/editor/${project.id}`)}>
                     <Icon name="Edit" size={14} className="mr-1" />
                     Редактировать
                   </Button>
@@ -182,7 +183,7 @@ const Dashboard = () => {
             </Card>
           ))}
 
-          <Card className="border-2 border-dashed hover:border-primary transition-colors cursor-pointer group">
+          <Card className="border-2 border-dashed hover:border-primary transition-colors cursor-pointer group" onClick={() => navigate('/editor')}>
             <CardContent className="flex flex-col items-center justify-center h-full min-h-[300px] text-center">
               <div className="w-16 h-16 bg-secondary rounded-full flex items-center justify-center mb-4 group-hover:bg-primary/10 transition-colors">
                 <Icon name="Plus" size={32} className="text-muted-foreground group-hover:text-primary transition-colors" />
